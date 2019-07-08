@@ -18,14 +18,6 @@ steps:
   inputs:
     version: '2.1.300' # replace this value with the version that you need for your project
 # ...
-- task: DotNetCoreCLI@2
-  displayName: 'Install dotnetsay'
-  inputs:
-    command: custom
-    projects: '**/*.csproj'
-    custom: tool
-    arguments: 'install -g dotnetsay'
-# ...
 - script: dotnet restore
 # ...
 #- script: dotnet build --configuration $(buildConfiguration)
@@ -37,3 +29,11 @@ steps:
     command: build
     projects: '**/*.csproj'
     arguments: '--configuration Release' # Update this to match your need
+# ...
+- task: DotNetCoreCLI@2
+  displayName: 'Install dotnetsay'
+  inputs:
+    command: custom
+    projects: '**/*.csproj'
+    custom: tool
+    arguments: 'install -g dotnetsay'
